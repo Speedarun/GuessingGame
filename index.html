@@ -56,7 +56,11 @@
     function restart() {
         var guessnumber = document.getElementById('guessnumber');
         guessnumber.textContent = "";
-        window.location.reload();
+        totalattempt.textContent = "Attempts left : 10";
+        para.textContent = "You are Right/Wrong";
+        para.style.backgroundColor = "white";
+        para.style.color = "black";
+        attempt = 10;
     }
 </script>
 
