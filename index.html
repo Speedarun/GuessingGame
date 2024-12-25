@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="port.css">
+</head>
+
+<body>
+    <div class="section-guess">
+        <h1>Guessing Game</h1>
+
+        <h2>Enter Your Guessed Number</h2>
+        <input id="guessnumber" type="text">
+
+        <button onclick="check()">Check</button>
+
+        <p id="para">You are Right/Wrong</p>
+
+        <p id="attempt">Attempts left : 10</p>
+
+        <button id="reload" onclick="restart()">Restart</button>
+    </div>
+</body>
+<script>
+    var guessnumber = document.getElementById("guessnumber");
+    var para = document.getElementById("para");
+    var totalattempt= document.getElementById("attempt");
+    var attempt = 10;
+    console.log(guessnumber.textContent);
+    function check() {
+        var randomnumber = Math.floor(Math.random() * 10);
+        console.log(randomnumber)
+        if (randomnumber == guessnumber.value) {
+            para.textContent = "You are Right";
+            para.style.backgroundColor = "green";
+            para.style.color = "white";
+            alert("You Won....");
+            alert("Your score: " + attempt*5);
+            
+            guessnumber.textContent = "";
+            restart();
+        }
+        else {
+            para.textContent = "You are Wrong";
+            para.style.backgroundColor = "red";
+            para.style.color = "white";
+            attempt = attempt - 1;
+            totalattempt.textContent = "Attempts left : " + attempt;
+            if (attempt == 0) {
+                alert("You Lose...");
+                guessnumber.textContent = "";
+                restart();
+            }
+        }
+    }
+    function restart() {
+        var guessnumber = document.getElementById('guessnumber');
+        guessnumber.textContent = "";
+        window.location.reload();
+    }
+</script>
+
+</html>
